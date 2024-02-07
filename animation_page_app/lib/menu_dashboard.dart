@@ -107,39 +107,33 @@ class _MenuDashboardState extends State<MenuDashboard>
                     ],
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    height: 200,
-                    child: PageView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        Container(
-                          color: Colors.blue,
-                          width: 100,
-                          margin: const EdgeInsets.symmetric(horizontal: 12),
-                        ),
-                        Container(
-                          color: Colors.yellow,
-                          width: 100,
-                          margin: const EdgeInsets.symmetric(horizontal: 12),
-                        ),
-                        Container(
-                          color: Colors.pink,
-                          width: 100,
-                          margin: const EdgeInsets.symmetric(horizontal: 12),
-                        ),
-                      ],
+                    margin: const EdgeInsets.symmetric(vertical: 20),
+                    height: 230,
+                    child: SizedBox(
+                      height: 180,
+                      child: PageView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          createContainerCard(),
+                          createContainerCard(),
+                          createContainerCard(),
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   ListView.separated(
-                    shrinkWrap: true,
-                    physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
                       itemBuilder: (context, index) {
                         return ListTile(
                           leading: const Icon(Icons.verified_user),
-                          title: Text("Student $index",style: const TextStyle(color: Colors.white),),
+                          title: Text(
+                            "Student $index",
+                            style: const TextStyle(color: Colors.white),
+                          ),
                           trailing: const Icon(Icons.add),
                         );
                       },
@@ -154,6 +148,122 @@ class _MenuDashboardState extends State<MenuDashboard>
         ),
       ),
     );
+  }
+
+  createContainerCard() {
+    return Container(
+        alignment: Alignment.bottomCenter,
+        padding: const EdgeInsets.all(12),
+        width: 100,
+        decoration: const BoxDecoration(
+          boxShadow: [BoxShadow(color: Colors.blue, blurRadius: 12)],
+          color: Colors.blue,
+          borderRadius: BorderRadius.all(
+            Radius.circular(12),
+          ),
+        ),
+        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 80),
+                      child: Text(
+                        "Current Balance",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w300),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "BilgeBank",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 30),
+              child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    "\$1253461",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  )),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 70),
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "6512   6578   2458   8756",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w100,
+                      fontSize: 18),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 30),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Card Holder",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w200),
+                      ),
+                      Text(
+                        "Bilge Kaan",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 100),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Date",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w200),
+                      ),
+                      Text(
+                        "05/26",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
+        ));
   }
 
   createMenu(BuildContext context) {
